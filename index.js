@@ -15,9 +15,28 @@
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+const stomach = []
+function Person(props) {
+this.name = props.name
+this.age = props.age
+return `${this.name}, ${this.age}`
 }
+let neo = {
+  name: "Neo",
+  age: 20,}
+
+  Person.prototype.eat = function(str){ 
+    if (stomach.length <= 10){
+    stomach.push(str)};
+    return `I like to eat ${str}.`},
+  Person.prototype.poop = function(){
+  stomach.splice(0,stomach.length)
+  },
+  Person.prototype.toString = function(){
+    return `${this.name}, ${this.age}`
+  }
+  const Neo = new Person(neo)
+
 
 
 /*
@@ -35,12 +54,35 @@ function Person() {
     - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
-
-function Car() {
-
+let tank = 0
+let odometer = 0
+function Car(prop) {
+  this.model = prop.model
+  this.milesPerGallon = prop.milesPerGallon
 }
 
+Car.prototype.fill = function(gallons){
+  tank+=gallons
+}
+Car.prototype.drive = function(distance){
+  odometer += distance
+  tank= tank - distance/5
+  if (tank < 0){
+    return `I ran out of fuel at ${odometer} miles!`
+  }
+}
+const car1 = {
+  model : "honda",
+  milesPerGallon : 5
+}
+const honda = new Car(car1)
 
+// console.log (honda)
+// console.log(honda.fill(10))
+// console.log(tank)
+// console.log(honda.drive(5))
+// console.log(tank)
+// console.log(odometer)
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
